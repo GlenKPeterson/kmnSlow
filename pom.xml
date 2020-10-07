@@ -78,45 +78,11 @@
 	                <args>
 		                <arg>-Xjvm-default=enable</arg>
 	                </args>
-	                <compilerPlugins>
-		                <plugin>jpa</plugin>
-	                </compilerPlugins>
                 </configuration>
-	            <dependencies>
-		            <dependency>
-			            <groupId>org.jetbrains.kotlin</groupId>
-			            <artifactId>kotlin-maven-noarg</artifactId>
-			            <version>${kotlin.version}</version>
-		            </dependency>
-	            </dependencies>
             </plugin>
 		</plugins>
 	</build>
 	<dependencies>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-c3p0</artifactId>
-			<version>${hibernate.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>${hibernate.version}</version>
-		</dependency>
-		<!--
-		Provides good error messages in catalina.out for otherwise thorny Hibernate mapping issues.
-		-->
-		<dependency>
-			<groupId>org.hibernate.validator</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>6.1.6.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<version>1.4.200</version>
-			<scope>test</scope>
-		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

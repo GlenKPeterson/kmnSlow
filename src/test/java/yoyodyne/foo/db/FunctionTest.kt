@@ -2,19 +2,9 @@ package yoyodyne.foo.db
 
 import yoyodyne.CompareToContract.testCompareTo
 import yoyodyne.EqualsContract.equalsDistinctHashCode
-import yoyodyne.TestGlobals
-import yoyodyne.foo.util.HibernateUtil
-import kotlin.test.AfterTest
-import kotlin.test.BeforeTest
 import kotlin.test.Test
 
 class FunctionTest {
-
-    @BeforeTest
-    fun before() { TestGlobals.testDbInMemory() }
-
-    @AfterTest
-    fun after() { HibernateUtil.commit() }
 
     @Test
     fun testBasics() {

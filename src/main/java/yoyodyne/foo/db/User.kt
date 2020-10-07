@@ -2,37 +2,17 @@ package yoyodyne.foo.db
 
 import yoyodyne.foo.util.FooGlobals.equalsIdOrFields
 import yoyodyne.foo.util.FooGlobals.hashIdOrFields
-import javax.persistence.*
-import javax.persistence.GenerationType.IDENTITY
 
-@Entity
-@Table(name = "user", uniqueConstraints = [UniqueConstraint(columnNames = ["table1_id", "identifier"])])
 class User(
-        @get:ManyToOne(fetch = FetchType.LAZY)
-        @get:JoinColumn(name = "table1_id", nullable = false)
         var table1: Table1,
-
-        @get:Column(name = "identifier", nullable = false, length = 64)
         var identifier: String,
-
-        @get:Column(name = "email", length = 64, nullable = false)
         var email: String,
-
-        @get:Column(name = "last_name_c", nullable = false, length = 40)
         var lastNameC: String,
 ) : java.io.Serializable,
     Comparable<User>,
     Idd {
-
-    @get:Id
-    @get:GeneratedValue(strategy = IDENTITY)
-    @get:Column(name = "id", unique = true, nullable = false)
     override var id: Long = 0
-
-    @get:Column(name = "first_name_c", length = 40)
     var firstNameC: String? = null
-
-    @get:Column(name = "middle_name_c", length = 40)
     var middleNameC: String? = null
 
     override fun equals(other: Any?): Boolean =

@@ -3,25 +3,14 @@ package yoyodyne.foo.db
 import yoyodyne.foo.util.FooGlobals.equalsIdOrFields
 import yoyodyne.foo.util.FooGlobals.hashIdOrFields
 import java.util.Objects
-import javax.persistence.*
-import javax.persistence.GenerationType.IDENTITY
 
-@Entity
-@Table(name = "metric_type",
-       uniqueConstraints = [UniqueConstraint(columnNames = ["table1_id", "identifier"])])
 class MetricType(
-        @get:ManyToOne(fetch = FetchType.LAZY)
-        @get:JoinColumn(name = "table1_id", nullable = false)
-        var table1: Table1,
+var table1: Table1,
 
-        @get:Column(name = "identifier", nullable = false)
-        var identifier: String,
+var identifier: String,
 ) : java.io.Serializable, Comparable<MetricType>, Idd {
 
-    @get:Id
-    @get:GeneratedValue(strategy = IDENTITY)
-    @get:Column(name = "id", unique = true, nullable = false)
-    override var id: Long = 0
+override var id: Long = 0
 
     override fun compareTo(other: MetricType): Int {
         if (this === other) {
