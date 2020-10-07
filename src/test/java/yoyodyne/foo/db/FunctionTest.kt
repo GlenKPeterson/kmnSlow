@@ -1,7 +1,7 @@
 package yoyodyne.foo.db
 
-import org.organicdesign.testUtils.CompareToContract.testCompareTo
-import org.organicdesign.testUtils.EqualsContract.equalsDistinctHashCode
+import yoyodyne.CompareToContract.testCompareTo
+import yoyodyne.EqualsContract.equalsDistinctHashCode
 import yoyodyne.TestGlobals
 import yoyodyne.foo.util.HibernateUtil
 import kotlin.test.AfterTest
