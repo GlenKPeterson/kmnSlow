@@ -113,21 +113,6 @@ public class EqualsContract {
      @param equiv1 First equivalent (but unique) object
      @param equiv2 Second equivalent (but unique) object (could be a different class)
      @param equiv3 Third equivalent (but unique) object (could be a different class)
-     @param different Non-equivalent object with the same hashCode as the previous three
-     @param <S> The super-class of all these objects - an interface or super-class within which they should be equal.
-     */
-    public static <S, T1 extends S, T2 extends S, T3 extends S, T4 extends S>
-    void equalsSameHashCode(T1 equiv1, T2 equiv2, T3 equiv3, T4 different) {
-        equalsHashCode(equiv1, equiv2, equiv3, different, false);
-    }
-
-    /**
-     Tests Reflexive, Symmetric, Transitive, Consistent, and non-nullity properties of the equals()
-     contract.  See note in class documentation.
-
-     @param equiv1 First equivalent (but unique) object
-     @param equiv2 Second equivalent (but unique) object (could be a different class)
-     @param equiv3 Third equivalent (but unique) object (could be a different class)
      @param different Non-equivalent object with a different hashCode (should be an otherwise compatible class)
      @param <S> The super-class of all these objects - an interface or super-class within which they should be equal.
      */

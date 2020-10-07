@@ -1,11 +1,10 @@
 package yoyodyne;
 
-import yoyodyne.ComparatorContract.CompToZero;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import static org.junit.Assert.*;
-import static yoyodyne.ComparatorContract.CompToZero.*;
+import static yoyodyne.CompareToContract.CompToZero.*;
 
 /**
  Tests the various properties the Comparable contract is supposed to uphold.  If you think this is
@@ -18,6 +17,22 @@ import static yoyodyne.ComparatorContract.CompToZero.*;
  */
 @SuppressWarnings("WeakerAccess")
 public class CompareToContract {
+    public enum CompToZero {
+        LTZ {
+            @Override public String english() { return "less than"; }
+            @Override public boolean vsZero(int i) { return i < 0; }
+        },
+        GTZ {
+            @Override public String english() { return "greater than"; }
+            @Override public boolean vsZero(int i) { return i > 0; }
+        },
+        EQZ {
+            @Override public String english() { return "equal to"; }
+            @Override public boolean vsZero(int i) { return i == 0; }
+        };
+        public abstract String english();
+        public abstract boolean vsZero(int i);
+    }
 
     @SuppressWarnings("rawtypes")
     private static class NamedPair {
