@@ -1,6 +1,9 @@
 This is an attempt at figuring out why test-compile takes so long for the jpa kotlin plugin.
 https://stackoverflow.com/questions/63678413/kotlin-1-4-0-jpa-plugin-kotlin-maven-noarg-never-finishes-on-test-compile-but
 
+Reported in this issue:
+https://youtrack.jetbrains.com/issue/KT-41965
+
 ```shell script
 mvn clean test
 ```
