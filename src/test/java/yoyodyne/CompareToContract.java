@@ -1,7 +1,9 @@
 package yoyodyne;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.BiFunction;
 
 import static org.junit.Assert.*;
 import static yoyodyne.CompareToContract.CompToZero.*;
@@ -64,6 +66,18 @@ public class CompareToContract {
     }
 
     /**
+     Apply the given function against all unique pairings of items in the list.  Does this belong on Function2 instead
+     of List?
+     */
+    static <T> void permutations(List<T> items, BiFunction<? super T,? super T,?> f) {
+        for (int i = 0; i < items.size(); i++) {
+            for (int j = i + 1; j < items.size(); j++) {
+                f.apply(items.get(i), items.get(j));
+            }
+        }
+    }
+
+    /**
      Tests the various properties the Comparable contract is supposed to uphold.  Also tests that
      the behavior of compareTo() is compatible with equals() and hashCode() which is strongly
      suggested, but not actually required.  Write your own test if you don't want that.  Expects
@@ -80,13 +94,13 @@ public class CompareToContract {
     public static <S extends Comparable<? super S>, T1 extends S, T2 extends S, T3 extends S>
     void testCompareTo(T1 least1, T1 least2, T2 middle1, T2 middle2, T3 greatest1, T3 greatest2) {
         AtomicBoolean anySame = new AtomicBoolean();
-        EqualsContract.permutations(Arrays.asList(least1, least2, middle1, middle2, greatest1, greatest2),
-                                    (S a, S b) -> {
-                                        if (a == b) {
-                                            anySame.set(true);
-                                        }
-                                        return null;
-                                    });
+        permutations(Arrays.asList(least1, least2, middle1, middle2, greatest1, greatest2),
+                     (S a, S b) -> {
+                         if (a == b) {
+                             anySame.set(true);
+                         }
+                         return null;
+                     });
         if (anySame.get()) {
             throw new IllegalArgumentException("You must provide three pair of different objects in order");
         }
