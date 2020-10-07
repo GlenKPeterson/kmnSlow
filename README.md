@@ -6,5 +6,7 @@ mvn clean test
 ```
 
 almost all of the build time is
+```
 [INFO] --- kotlin-maven-plugin:1.4.10:test-compile (test-compile) @ FooBar ---
 [INFO] Applied plugin: 'jpa'
+```
