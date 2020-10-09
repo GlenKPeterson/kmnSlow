@@ -16,8 +16,10 @@ import static yoyodyne.CompareToContract.CompToZero.*;
 
  I got the idea of contract-based testing from watching Bill Venners:
  https://www.youtube.com/watch?v=bCTZQi2dpl8
+
+ This file is copied from https://github.com/GlenKPeterson/TestUtils
+ The issues have been fixed in the original.
  */
-@SuppressWarnings("WeakerAccess")
 public class CompareToContract {
     public enum CompToZero {
         LTZ {
@@ -90,6 +92,22 @@ public class CompareToContract {
     // Many of the comments in this method are paraphrases or direct quotes from the Javadocs for
     // the Comparable interface.  That is where this contract is specified.
     // https://docs.oracle.com/javase/8/docs/api/
+
+    // THIS IS WHAT MAKES KOTLIN COMPILE SLOW.
+    // A great fix is to change the signature to:
+    //     public static <S extends Comparable<? super S>>
+    //    void testCompareTo(
+    //            @NotNull S least1,
+    //            @NotNull S least2,
+    //            @NotNull S middle1,
+    //            @NotNull S middle2,
+    //            @NotNull S greatest1,
+    //            @NotNull S greatest2
+    //    ) {
+    // Still, Kotlin should:
+    //  1. Not be so slow with this
+    //  2. Cache whatever it decides about it so that calling this method multiple times
+    //     is not additive in terms of slowness.
     @SuppressWarnings("unchecked")
     public static <S extends Comparable<? super S>, T1 extends S, T2 extends S, T3 extends S>
     void testCompareTo(T1 least1, T1 least2, T2 middle1, T2 middle2, T3 greatest1, T3 greatest2) {
